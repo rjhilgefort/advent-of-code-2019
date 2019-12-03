@@ -15,6 +15,7 @@
     "re:build": "bsb -make-world",
     "re:build:watch": "bsb -make-world -w",
     "re:clean": "bsb -clean-world",
+    "re:rebuild": "run-s re:clean re:build",
     "re:lint:fix": "find ./src -type f -name '*.re' | xargs ./node_modules/.bin/refmt --in-place"
   },
   "dependencies": {
