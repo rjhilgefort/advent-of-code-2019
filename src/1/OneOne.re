@@ -1,4 +1,4 @@
-let add = (x, y) => x + y;
+open Utils
 
 let fuel_from_mass = (mass: int): int => mass / 3 - 2;
 
