@@ -3,6 +3,7 @@
 
 var Fs = require("fs");
 var Jest = require("@glennsl/bs-jest/src/jest.js");
+var $$Array = require("bs-platform/lib/js/array.js");
 var Caml_format = require("bs-platform/lib/js/caml_format.js");
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var Utils$AdventOfCode2019 = require("../../src/Utils.bs.js");
@@ -114,9 +115,51 @@ Jest.describe("TwoOne.intcode", (function (param) {
                                     99
                                   ], undefined, /* () */0)));
               }));
-        return Jest.test("Problem Input", (function (param) {
+        return Jest.test("Part 1", (function (param) {
                       var __x = Utils$AdventOfCode2019.update(2, 2, Utils$AdventOfCode2019.update(1, 12, input));
-                      return Jest.Expect[/* toEqual */12](3716250, Jest.Expect[/* expect */0](Utils$AdventOfCode2019.nth(0, TwoOne$AdventOfCode2019.intcode(__x, undefined, /* () */0))));
+                      return Jest.Expect[/* toEqual */12](3716250, Jest.Expect[/* expect */0](Utils$AdventOfCode2019.head(TwoOne$AdventOfCode2019.intcode(__x, undefined, /* () */0))));
+                    }));
+      }));
+
+Jest.describe("TwoOne.intcodeOverride", (function (param) {
+        return Jest.test("Part 1 gut check", (function (param) {
+                      return Jest.Expect[/* toEqual */12](3716250, Jest.Expect[/* expect */0](Utils$AdventOfCode2019.head(TwoOne$AdventOfCode2019.intcodeOverride($$Array.copy(input), 12, 2, /* () */0))));
+                    }));
+      }));
+
+Jest.describe("TwoOne.computeNounVerb", (function (param) {
+        Jest.test("Simple", (function (param) {
+                var program = /* array */[
+                  1,
+                  9,
+                  10,
+                  3,
+                  2,
+                  3,
+                  11,
+                  0,
+                  99,
+                  30,
+                  40,
+                  50
+                ];
+                var maxVal = program.length - 1 | 0;
+                return Jest.Expect[/* toEqual */12](/* tuple */[
+                            9,
+                            10
+                          ], Jest.Expect[/* expect */0](TwoOne$AdventOfCode2019.computeNounVerb(program, 3500, maxVal, /* () */0)));
+              }));
+        Jest.test("Part 1 gut check", (function (param) {
+                return Jest.Expect[/* toEqual */12](/* tuple */[
+                            12,
+                            2
+                          ], Jest.Expect[/* expect */0](TwoOne$AdventOfCode2019.computeNounVerb($$Array.copy(input), 3716250, undefined, /* () */0)));
+              }));
+        return Jest.test("Part 2 puzzle", (function (param) {
+                      return Jest.Expect[/* toEqual */12](/* tuple */[
+                                  64,
+                                  72
+                                ], Jest.Expect[/* expect */0](TwoOne$AdventOfCode2019.computeNounVerb($$Array.copy(input), 19690720, undefined, /* () */0)));
                     }));
       }));
 
